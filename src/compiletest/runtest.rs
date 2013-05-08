@@ -352,7 +352,7 @@ fn check_expected_errors(expected_errors: ~[errors::ExpectedError],
     // is the ending point, and * represents ANSI color codes.
     for str::each_line(ProcRes.stderr) |line| {
         let mut was_expected = false;
-        for vec::eachi(expected_errors) |i, ee| {
+        for expected_errors.eachi |i, ee| {
             if !found_flags[i] {
                 debug!("prefix=%s ee.kind=%s ee.msg=%s line=%s",
                        prefixes[i], ee.kind, ee.msg, line);
@@ -528,7 +528,7 @@ fn compose_and_run_compiler(
     let extra_link_args = ~[~"-L",
                             aux_output_dir_name(config, testfile).to_str()];
 
-    for vec::each(props.aux_builds) |rel_ab| {
+    for props.aux_builds.each |rel_ab| {
         let abs_ab = config.aux_base.push_rel(&Path(*rel_ab));
         let aux_args =
             make_compile_args(config, props, ~[~"--lib"] + extra_link_args,
@@ -780,7 +780,7 @@ fn _arm_exec_compiled_test(config: config, props: TestProps,
     newcmd_err.push_str(fmt!("LD_LIBRARY_PATH=%s %s/%s",
         config.adb_test_dir, config.adb_test_dir, prog_short));
 
-    for vec::each(subargs) |tv| {
+    for subargs.each |tv| {
         newcmd_out.push_str(" ");
         newcmd_err.push_str(" ");
         newcmd_out.push_str(tv.to_owned());

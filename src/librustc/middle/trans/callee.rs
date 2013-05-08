@@ -631,7 +631,7 @@ pub fn trans_args(cx: block,
     match args {
       ArgExprs(arg_exprs) => {
         let last = arg_exprs.len() - 1u;
-        for vec::eachi(arg_exprs) |i, arg_expr| {
+        for arg_exprs.eachi |i, arg_expr| {
             let arg_val = unpack_result!(bcx, {
                 trans_arg_expr(bcx,
                                arg_tys[i],
@@ -652,7 +652,7 @@ pub fn trans_args(cx: block,
     // now that all arguments have been successfully built, we can revoke any
     // temporary cleanups, as they are only needed if argument construction
     // should fail (for example, cleanup of copy mode args).
-    for vec::each(temp_cleanups) |c| {
+    for temp_cleanups.each |c| {
         revoke_clean(bcx, *c)
     }
 

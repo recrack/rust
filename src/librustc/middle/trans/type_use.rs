@@ -77,7 +77,7 @@ pub fn type_uses_for(ccx: @CrateContext, fn_id: def_id, n_tps: uint)
     match ty::get(ty::lookup_item_type(cx.ccx.tcx, fn_id).ty).sty {
         ty::ty_bare_fn(ty::BareFnTy {sig: ref sig, _}) |
         ty::ty_closure(ty::ClosureTy {sig: ref sig, _}) => {
-            for vec::each(sig.inputs) |arg| {
+            for sig.inputs.each |arg| {
                 type_needs(cx, use_repr, arg.ty);
             }
         }
@@ -212,8 +212,8 @@ pub fn type_needs_inner(cx: Context,
               ty::ty_enum(did, ref substs) => {
                 if list::find(enums_seen, |id| *id == did).is_none() {
                     let seen = @Cons(did, enums_seen);
-                    for vec::each(*ty::enum_variants(cx.ccx.tcx, did)) |v| {
-                        for vec::each(v.args) |aty| {
+                    for ty::enum_variants(cx.ccx.tcx, did).each |v| {
+                        for v.args.each |aty| {
                             let t = ty::subst(cx.ccx.tcx, &(*substs), *aty);
                             type_needs_inner(cx, use_, t, seen);
                         }
@@ -329,8 +329,7 @@ pub fn mark_for_expr(cx: Context, e: @expr) {
         node_type_needs(cx, use_tydesc, val.id);
       }
       expr_call(f, _, _) => {
-          for vec::each(ty::ty_fn_args(ty::node_id_to_type(cx.ccx.tcx,
-                                                           f.id))) |a| {
+          for ty::ty_fn_args(ty::node_id_to_type(cx.ccx.tcx, f.id)).each |a| {
               type_needs(cx, use_repr, a.ty);
           }
       }

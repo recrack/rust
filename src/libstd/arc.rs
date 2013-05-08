@@ -483,7 +483,6 @@ mod tests {
 
     use core::cell::Cell;
     use core::task;
-    use core::vec;
 
     #[test]
     fn manually_share_arc() {
@@ -681,7 +680,7 @@ mod tests {
         }
 
         // Wait for children to pass their asserts
-        for vec::each(children) |r| { r.recv(); }
+        for children.each |r| { r.recv(); }
 
         // Wait for writer to finish
         p.recv();
@@ -742,7 +741,7 @@ mod tests {
                 assert!(*state == 42);
                 *state = 31337;
                 // send to other readers
-                for vec::each(reader_convos) |x| {
+                for reader_convos.each |x| {
                     match *x {
                         (ref rc, _) => rc.send(()),
                     }
@@ -751,7 +750,7 @@ mod tests {
             let read_mode = arc.downgrade(write_mode);
             do (&read_mode).read |state| {
                 // complete handshake with other readers
-                for vec::each(reader_convos) |x| {
+                for reader_convos.each |x| {
                     match *x {
                         (_, ref rp) => rp.recv(),
                     }

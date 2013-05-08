@@ -839,12 +839,12 @@ pub fn from_str(s: &str) -> Result<Json, Error> {
 }
 
 pub struct Decoder {
-    priv mut stack: ~[Json],
+    priv stack:@mut ~[Json],
 }
 
 pub fn Decoder(json: Json) -> Decoder {
     Decoder {
-        stack: ~[json]
+        stack: @mut ~[json]
     }
 }
 

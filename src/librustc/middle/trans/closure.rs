@@ -220,7 +220,7 @@ pub fn store_environment(bcx: block,
 
     // Copy expr values into boxed bindings.
     let mut bcx = bcx;
-    for vec::eachi(bound_values) |i, bv| {
+    for bound_values.eachi |i, bv| {
         debug!("Copy %s into closure", bv.to_str(ccx));
 
         if ccx.sess.asm_comments() {

@@ -150,7 +150,7 @@ pub fn check_pat_variant(pcx: &pat_ctxt, pat: @ast::pat, path: @ast::Path,
                         fcx.infcx().ty_to_str(fcx.infcx().resolve_type_vars_if_possible(expected));
                     fcx.infcx().type_error_message_str(pat.span,
                                                        |actual| {
-                        fmt!("mismatched types: expected `%s` but found %s",
+                        fmt!("2mismatched types: expected `%s` but found %s",
                              resolved_expected, actual)},
                              ~"a structure pattern",
                              None);
@@ -193,7 +193,7 @@ pub fn check_pat_variant(pcx: &pat_ctxt, pat: @ast::pat, path: @ast::Path,
                 fcx.infcx().ty_to_str(fcx.infcx().resolve_type_vars_if_possible(expected));
             fcx.infcx().type_error_message_str(pat.span,
                                                |actual| {
-                    fmt!("mismatched types: expected `%s` but found %s",
+                    fmt!("3mismatched types: expected `%s` but found %s",
                          resolved_expected, actual)},
                     ~"an enum or structure pattern",
                     None);
@@ -331,7 +331,7 @@ pub fn check_struct_pat(pcx: &pat_ctxt, pat_id: ast::node_id, span: span,
         Some(&ast::def_struct(*)) | Some(&ast::def_variant(*)) => {
             let name = pprust::path_to_str(path, tcx.sess.intr());
             tcx.sess.span_err(span,
-                              fmt!("mismatched types: expected `%s` but found `%s`",
+                              fmt!("4mismatched types: expected `%s` but found `%s`",
                                    fcx.infcx().ty_to_str(expected),
                                    name));
         }
@@ -375,7 +375,7 @@ pub fn check_struct_like_enum_variant_pat(pcx: &pat_ctxt,
         Some(&ast::def_struct(*)) | Some(&ast::def_variant(*)) => {
             let name = pprust::path_to_str(path, tcx.sess.intr());
             tcx.sess.span_err(span,
-                              fmt!("mismatched types: expected `%s` but \
+                              fmt!("5mismatched types: expected `%s` but \
                                     found `%s`",
                                    fcx.infcx().ty_to_str(expected),
                                    name));
@@ -411,7 +411,7 @@ pub fn check_pat(pcx: &pat_ctxt, pat: @ast::pat, expected: ty::t) {
         debug!("pat_range ending type: %?", e_ty);
         if !require_same_types(
             tcx, Some(fcx.infcx()), false, pat.span, b_ty, e_ty,
-            || ~"mismatched types in range")
+            || ~"6mismatched types in range")
         {
             // no-op
         } else if !ty::type_is_numeric(b_ty) {
@@ -486,7 +486,7 @@ pub fn check_pat(pcx: &pat_ctxt, pat: @ast::pat, expected: ty::t) {
             }
             _ => {
                 tcx.sess.span_err(pat.span,
-                                  fmt!("mismatched types: expected `%s` but found struct",
+                                  fmt!("7mismatched types: expected `%s` but found struct",
                                        fcx.infcx().ty_to_str(expected)));
                 error_happened = true;
             }
@@ -576,7 +576,7 @@ pub fn check_pat(pcx: &pat_ctxt, pat: @ast::pat, expected: ty::t) {
                   fcx.infcx().ty_to_str(fcx.infcx().resolve_type_vars_if_possible(expected));
               fcx.infcx().type_error_message_str(pat.span,
                   |actual| {
-                      fmt!("mismatched types: expected `%s` but found %s",
+                      fmt!("8mismatched types: expected `%s` but found %s",
                            resolved_expected, actual)},
                                                  ~"a vector pattern",
                                                  None);
@@ -632,7 +632,7 @@ pub fn check_pointer_pat(pcx: &pat_ctxt,
             let resolved_expected =
                 fcx.infcx().ty_to_str(fcx.infcx().resolve_type_vars_if_possible(expected));
             fcx.infcx().type_error_message_str(span, |actual| {
-                    fmt!("mismatched types: expected `%s` but found %s",
+                    fmt!("9mismatched types: expected `%s` but found %s",
                          resolved_expected, actual)},
                                                fmt!("%s pattern", match pointer_kind {
                                                    Managed => "an @-box",
