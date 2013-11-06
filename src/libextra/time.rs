@@ -1367,7 +1367,7 @@ mod tests {
         assert!(d.gt(c));
     }
 
-    #[test]
+    #[test] #[ignore]
     fn run_tests() {
         // The tests race on tzset. So instead of having many independent
         // tests, we will just call the functions now.

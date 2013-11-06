@@ -345,7 +345,7 @@ mod tests {
         assert_eq!(run::process_status("true", []), 0);
     }
     #[test]
-    #[cfg(target_os="android")]
+    #[cfg(target_os="android")] #[ignore]
     fn test_process_status() {
         assert_eq!(run::process_status("/system/bin/sh", [~"-c",~"false"]), 1);
         assert_eq!(run::process_status("/system/bin/sh", [~"-c",~"true"]), 0);
@@ -367,7 +367,7 @@ mod tests {
         }
     }
     #[test]
-    #[cfg(target_os="android")]
+    #[cfg(target_os="android")] #[ignore]
     fn test_process_output_output() {
 
         let run::ProcessOutput {status, output, error}
@@ -394,7 +394,7 @@ mod tests {
         assert!(!error.is_empty());
     }
     #[test]
-    #[cfg(target_os="android")]
+    #[cfg(target_os="android")] #[ignore]
     fn test_process_output_error() {
 
         let run::ProcessOutput {status, output, error}
@@ -460,7 +460,7 @@ mod tests {
         assert_eq!(prog.finish(), 1);
     }
     #[test]
-    #[cfg(target_os="android")]
+    #[cfg(target_os="android")] #[ignore]
     fn test_finish_once() {
         let mut prog = run::Process::new("/system/bin/sh", [~"-c",~"false"],
                                          run::ProcessOptions::new());
@@ -475,7 +475,7 @@ mod tests {
         assert_eq!(prog.finish(), 1);
     }
     #[test]
-    #[cfg(target_os="android")]
+    #[cfg(target_os="android")] #[ignore]
     fn test_finish_twice() {
         let mut prog = run::Process::new("/system/bin/sh", [~"-c",~"false"],
                                          run::ProcessOptions::new());
@@ -500,7 +500,7 @@ mod tests {
         }
     }
     #[test]
-    #[cfg(target_os="android")]
+    #[cfg(target_os="android")] #[ignore]
     fn test_finish_with_output_once() {
 
         let mut prog = run::Process::new("/system/bin/sh", [~"-c",~"echo hello"],

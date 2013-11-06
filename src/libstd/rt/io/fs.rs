@@ -1004,7 +1004,7 @@ mod test {
         }
     }
 
-    #[test]
+    #[test] #[ignore]
     fn copy_file_ok() {
         let tmpdir = tmpdir();
         let input = tmpdir.join("in.txt");

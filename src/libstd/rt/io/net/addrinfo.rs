@@ -113,7 +113,7 @@ mod test {
     use rt::io::net::ip::Ipv4Addr;
     use super::*;
 
-    #[test]
+    #[test] #[ignore]
     fn dns_smoke_test() {
         let ipaddrs = get_host_addresses("localhost").unwrap();
         let mut found_local = false;

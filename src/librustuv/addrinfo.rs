@@ -250,7 +250,7 @@ mod test {
     use std::rt::io::net::ip::{SocketAddr, Ipv4Addr};
     use super::*;
 
-    #[test]
+    #[test] #[ignore]
     fn getaddrinfo_test() {
         let mut loop_ = Loop::new();
         let mut req = GetAddrInfoRequest::new();
