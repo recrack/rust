@@ -9,6 +9,7 @@
 // except according to those terms.
 
 // xfail-fast #[feature] doesn't work with check-fast
+// xfail-android
 #[feature(asm)];
 
 fn foo(x: int) { info!("{}", x); }
