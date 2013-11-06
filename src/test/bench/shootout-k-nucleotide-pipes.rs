@@ -11,6 +11,8 @@
 // xfail-pretty the `let to_child` line gets an extra newline
 // multi tasking k-nucleotide
 
+// xfail-android
+
 extern mod extra;
 
 use extra::sort;
