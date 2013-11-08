@@ -251,6 +251,7 @@ mod test {
     use super::*;
 
     #[test]
+    #[ignore(cfg(target_os = "android"))]
     fn getaddrinfo_test() {
         let mut loop_ = Loop::new();
         let mut req = GetAddrInfoRequest::new();

@@ -1005,6 +1005,7 @@ mod test {
     }
 
     #[test]
+    #[ignore(cfg(target_os = "android"))]
     fn copy_file_ok() {
         let tmpdir = tmpdir();
         let input = tmpdir.join("in.txt");
