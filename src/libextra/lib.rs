@@ -66,7 +66,6 @@ pub mod smallintmap;
 pub mod sort;
 
 pub mod dlist;
-pub mod treemap;
 
 // And ... other stuff
 
@@ -112,6 +111,7 @@ pub mod serialize;
 pub mod extra {
     pub use serialize;
     pub use test;
+    pub use container;
 
     // For bootstrapping.
     pub use std::clone;

@@ -8,8 +8,6 @@
 // option. This file may not be copied, modified, or distributed
 // except according to those terms.
 
-extern mod extra;
-
 use std::clone::{Clone, DeepClone};
 use std::cmp::{TotalEq, Ord, TotalOrd, Equiv};
 use std::cmp::Equal;
@@ -18,7 +16,7 @@ use std::default::Default;
 use std::send_str::{SendStr, SendStrOwned, SendStrStatic};
 use std::str::Str;
 use std::to_str::ToStr;
-use self::extra::treemap::TreeMap;
+use std::treemap::TreeMap;
 use std::option::Some;
 
 pub fn main() {

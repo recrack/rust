@@ -39,7 +39,8 @@ pub trait Deque<T> : Mutable {
     fn pop_front(&mut self) -> Option<T>;
 }
 
-#[cfg(test)]
+//#[cfg(test)]
+#[allow(missing_doc)]
 pub mod bench {
     use std::container::MutableMap;
     use std::{vec, rand};

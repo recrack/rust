@@ -26,10 +26,10 @@ use std::rt::io::mem::MemWriter;
 use std::num;
 use std::str;
 use std::to_str;
+use std::treemap::TreeMap;
 
 use serialize::Encodable;
 use serialize;
-use treemap::TreeMap;
 
 /// Represents a json value
 #[deriving(Clone, Eq)]
@@ -1313,7 +1313,7 @@ mod tests {
 
     use std::rt::io;
     use serialize::Decodable;
-    use treemap::TreeMap;
+    use std::treemap::TreeMap;
 
     #[deriving(Eq, Encodable, Decodable)]
     enum Animal {

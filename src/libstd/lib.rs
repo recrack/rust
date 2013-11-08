@@ -197,6 +197,9 @@ pub mod mem;
 pub mod unstable;
 
 
+// others
+pub mod treemap;
+
 /* For internal use, not exported */
 
 mod unicode;
