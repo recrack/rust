@@ -86,6 +86,7 @@ pub use self::util::set_exit_status;
 // Perhaps this shouldn't be a `pub use` though and there should be another
 // method...
 pub use self::util::default_sched_threads;
+pub use self::util::dumb_println;
 
 // XXX: these probably shouldn't be public...
 #[doc(hidden)]

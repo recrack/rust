@@ -997,6 +997,11 @@ pub fn std_macros() -> @str {
         ($($arg:tt)*) => (format_args!(::std::rt::io::stdio::println_args, $($arg)*))
     )
 
+    // TODO: ymin
+    macro_rules! e(($($arg:tt)*) => (
+        format_args!(::std::rt::dumb_println, $($arg)*)
+    ))
+
     macro_rules! local_data_key (
         ($name:ident: $ty:ty) => (
             static $name: ::std::local_data::Key<$ty> = &::std::local_data::Key;
